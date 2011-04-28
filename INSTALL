@@ -1,0 +1,7 @@
+Steps to build and run:	
+
+   $ git clone git@github.com:flexoid/rTracer.git
+   $ cd rTracer/src
+   $ cmake .
+   $ make
+   # ../bin/rTracer
