@@ -51,6 +51,9 @@ CMakeLists.txt.user
 *vcproj.*.*.user
 *.ncb
 
+# Code::Blocks project file
+*.cbp
+
 # MinGW generated files
 *.Debug
 *.Release
