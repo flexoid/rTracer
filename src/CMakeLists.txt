@@ -5,11 +5,12 @@ set (PROJECT
 
 set (SOURCES
     main.cpp
-    engine.cpp)
+    engine.cpp
+    vector3.h)
 
 set (HEADERS
     engine.h
-    vector.h)
+    vector3.h)
 
 set (EXECUTABLE_OUTPUT_PATH ../bin)
 
