@@ -11,6 +11,8 @@ set (HEADERS
     engine.h
     vector.h)
 
+set (EXECUTABLE_OUTPUT_PATH ../bin)
+
 find_package(SDL REQUIRED)
 
 if (NOT SDL_FOUND)
