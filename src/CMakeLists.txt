@@ -12,7 +12,10 @@ set (SOURCES
     vector3.h
     ray.h
 
-    primitives/iprimitive.h)
+    primitives/iprimitive.h
+
+    primitives/sphere.cpp
+    primitives/sphere.h)
 
 set (EXECUTABLE_OUTPUT_PATH ../bin)
 
