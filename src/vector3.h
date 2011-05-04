@@ -125,5 +125,10 @@ public:
         z *= fMult;
         return;
     }
+
+    static Vector3 Null()
+    {
+        return Vector3(0, 0, 0);
+    }
 };
 #endif // VECTOR3_H
