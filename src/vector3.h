@@ -1,5 +1,5 @@
-#ifndef CVec3_h
-#define CVec3_h
+#ifndef VECTOR3_H
+#define VECTOR3_H
 
 class Vector3
 {
@@ -124,4 +124,4 @@ public:
         return;
     }
 };
-#endif
+#endif // VECTOR3_H

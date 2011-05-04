@@ -1,5 +1,5 @@
-#ifndef WINDOW_H
-#define WINDOW_H
+#ifndef ENGINE_H
+#define ENGINE_H
 
 #include <SDL/SDL.h>
 
@@ -25,4 +25,4 @@ private:
     int width, height;
 };
 
-#endif // WINDOW_H
+#endif // ENGINE_H
