@@ -10,7 +10,9 @@ set (SOURCES
     engine.h
 
     vector3.h
-    ray.h)
+    ray.h
+
+    primitives/iprimitive.h)
 
 set (EXECUTABLE_OUTPUT_PATH ../bin)
 
