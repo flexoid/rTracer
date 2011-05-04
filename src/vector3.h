@@ -1,6 +1,8 @@
 #ifndef VECTOR3_H
 #define VECTOR3_H
 
+#include <math.h>
+
 class Vector3
 {
 public:
