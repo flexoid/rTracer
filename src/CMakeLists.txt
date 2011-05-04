@@ -9,7 +9,8 @@ set (SOURCES
     engine.cpp
     engine.h
 
-    vector3.h)
+    vector3.h
+    ray.h)
 
 set (EXECUTABLE_OUTPUT_PATH ../bin)
 
