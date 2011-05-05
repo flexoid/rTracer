@@ -12,6 +12,7 @@ set (SOURCES
     vector3.h
     ray.h
     colorrgb.h
+    material.h
 
     primitives/primitive.h
     primitives/iprimitive.h
