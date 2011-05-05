@@ -24,7 +24,7 @@ int Engine::Init()
     //Проверяем, создалось ли окно
     if (screen == NULL)
     {
-        printf("Unable to set 640x480 video: %s\n", SDL_GetError());
+        printf("Unable to set %dx%d video: %s\n", width, height, SDL_GetError());
         return -1;
     }
 
@@ -47,13 +47,9 @@ bool Engine::Run()
 int Engine::Render()
 {
     Slock(screen);
-    for(int x=0;x<640;x++)
-    {
-        for(int y=0;y<480;y++)
-        {
-            DrawPixel(screen, x,y,y/2,y/2,x/3);
-        }
-    }
+
+    // Отрисовка
+
     Sulock(screen);
     SDL_Flip(screen);
 }
