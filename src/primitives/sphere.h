@@ -1,9 +1,10 @@
 #ifndef SPHERE_H
 #define SPHERE_H
 
+#include "primitive.h"
 #include "iprimitive.h"
 
-class Sphere : IPrimitive
+class Sphere : Primitive, IPrimitive
 {
 public:
     Sphere(Vector3 center, float radius);

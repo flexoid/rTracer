@@ -13,6 +13,7 @@ set (SOURCES
     ray.h
     colorrgb.h
 
+    primitives/primitive.h
     primitives/iprimitive.h
 
     primitives/sphere.cpp
