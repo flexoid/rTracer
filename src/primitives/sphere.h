@@ -11,6 +11,7 @@ public:
 
     virtual Vector3 Norm(Vector3 point);
     virtual Vector3 Trace(Ray);
+    virtual ColorRGB Color();
 private:
     Vector3 center;
     float radius;

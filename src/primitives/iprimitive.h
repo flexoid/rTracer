@@ -3,6 +3,7 @@
 
 #include "../vector3.h"
 #include "../ray.h"
+#include "../colorrgb.h"
 
 /**
   Интерфейс IPrimitive.
@@ -14,6 +15,7 @@ class IPrimitive
 public:
     virtual Vector3 Norm(Vector3) = 0;
     virtual Vector3 Trace(Ray) = 0;
+    virtual ColorRGB Color() = 0;
 };
 
 #endif // IPRIMITIVE_H

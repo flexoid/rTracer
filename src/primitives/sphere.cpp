@@ -16,3 +16,8 @@ Vector3 Sphere::Trace(Ray ray)
     // Временная заглушка
     return Vector3(0,0,0);
 }
+
+ColorRGB Sphere::Color()
+{
+    return color;
+}
