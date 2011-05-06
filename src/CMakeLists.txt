@@ -11,6 +11,7 @@ set (SOURCES
 
     vector3.h
     ray.h
+    light.h
     colorrgb.h
     material.h
     math_c.h
