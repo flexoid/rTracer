@@ -2,11 +2,11 @@
 #include "math.h"
 #include "../math_c.h"
 
-Sphere::Sphere(Vector3 center, float radius, ColorRGB color)
+Sphere::Sphere(Vector3 center, float radius, ColorRGB color, Material material)
+    : center(center), radius(radius)
 {
-    this->center = center;
-    this->radius = radius;
     this->color = color;
+    this->material = material;
 }
 
 Vector3 Sphere::Norm(Vector3 point)

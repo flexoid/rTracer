@@ -6,7 +6,7 @@
 class Sphere : public Primitive
 {
 public:
-    Sphere(Vector3 center, float radius, ColorRGB color);
+    Sphere(Vector3 center, float radius, ColorRGB color, Material material);
 
     virtual Vector3 Norm(Vector3 point);
     virtual Vector3 Trace(Ray);
