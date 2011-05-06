@@ -9,6 +9,9 @@ set (SOURCES
     engine.cpp
     engine.h
 
+    scene.cpp
+    scene.h
+
     vector3.h
     ray.h
     light.h
