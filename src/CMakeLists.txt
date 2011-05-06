@@ -16,7 +16,6 @@ set (SOURCES
     math_c.h
 
     primitives/primitive.h
-    primitives/iprimitive.h
 
     primitives/sphere.cpp
     primitives/sphere.h)

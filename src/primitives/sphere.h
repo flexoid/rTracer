@@ -2,9 +2,8 @@
 #define SPHERE_H
 
 #include "primitive.h"
-#include "iprimitive.h"
 
-class Sphere : Primitive, IPrimitive
+class Sphere : Primitive
 {
 public:
     Sphere(Vector3 center, float radius, ColorRGB color);
