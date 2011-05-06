@@ -3,7 +3,7 @@
 
 #include "primitive.h"
 
-class Sphere : Primitive
+class Sphere : public Primitive
 {
 public:
     Sphere(Vector3 center, float radius, ColorRGB color);
