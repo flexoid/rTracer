@@ -80,7 +80,7 @@ public:
     }
 
     // Functions
-    inline float ScalarProduct( const Vector3 &V1 ) const
+    inline float DotProduct( const Vector3 &V1 ) const
     {
         return V1.x*x + V1.y*y + V1.z*z;
     }
