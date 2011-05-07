@@ -20,10 +20,10 @@ Vector3 Sphere::Trace(Ray ray)
     Vector3 ac=center-ray.from;
     float acs=0;
     // Вычисляем коэффиценты в квадратном уравнении пересечения сферы и прямой
-    acs = ac.Dot(ray.dir);
+    acs = ac.ScalarProduct(ray.dir);
     if (acs < 0)
         return Vector3(0,0,0);
-    float sqrLength=ac.Dot(ac);
+    float sqrLength=ac.ScalarProduct(ac);
     // Вычисляем дискриминант, корни и находим точку пересечения
     float D=acs*acs-sqrLength+radius*radius;
     if (D < 0)
