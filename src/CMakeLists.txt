@@ -12,6 +12,9 @@ set (SOURCES
     scene.cpp
     scene.h
 
+    raytracer.cpp
+    raytracer.h
+
     vector3.h
     ray.h
     light.h
