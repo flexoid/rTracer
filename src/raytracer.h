@@ -15,6 +15,8 @@ public:
 
 private:
     Scene* scene;
+    Vector3 Refract(Primitive* primitive, Vector3 vector, Vector3 point);
+    Vector3 Reflect(Primitive* primitive, Vector3 vector, Vector3 point);
 };
 
 #endif // RAYTRACER_H
