@@ -16,12 +16,15 @@ Vector3 Sphere::Norm(Vector3 point)
 
 Vector3 Sphere::Trace(Ray ray)
 {
+    // Сдвигаем начало отсчета на вектор ray.from
     Vector3 ac=center-ray.from;
     float acs=0;
+    // Вычисляем коэффиценты в квадратном уравнении пересечения сферы и прямой
     acs = ac.x*ray.dir.x+ac.y*ray.dir.y+ac.z*ray.dir.z;
     if (acs < 0)
         return Vector3(0,0,0);
     float sqrLength=ac.Dot(ac);
+    // Вычисляем дискриминант, корни и находим точку пересечения
     float D=acs*acs-sqrLength+radius*radius;
     if (D < 0)
         return Vector3(0,0,0);
