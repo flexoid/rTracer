@@ -20,7 +20,7 @@ Vector3 Sphere::Trace(Ray ray)
     Vector3 ac=center-ray.from;
     float acs=0;
     // Вычисляем коэффиценты в квадратном уравнении пересечения сферы и прямой
-    acs = ac.x*ray.dir.x+ac.y*ray.dir.y+ac.z*ray.dir.z;
+    acs = ac.Dot(ray.dir);
     if (acs < 0)
         return Vector3(0,0,0);
     float sqrLength=ac.Dot(ac);
