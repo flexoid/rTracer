@@ -23,6 +23,11 @@ public:
         return (x == V2.x && y == V2.y && z == V2.z);
     }
 
+    inline bool operator!= (const Vector3& V2) const
+    {
+        return !(*this == V2);
+    }
+
     inline Vector3 operator+ (const Vector3& V2) const
     {
         return Vector3( x + V2.x,  y + V2.y,  z + V2.z);
