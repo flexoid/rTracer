@@ -57,3 +57,10 @@ Primitive* RayTracer::Trace(Ray ray, Vector3 &IntersectPoint)
     else
         return 0;
 }
+
+bool RayTracer::InShadow(Vector3 point, Light light)
+{
+    Vector3 p;
+    Primitive* primitive = Trace(Ray(light.pos, point), p);
+    return !primitive;
+}
