@@ -3,8 +3,11 @@
 
 #include "vector3.h"
 
-struct Ray
+class Ray
 {
+public:
+    Ray(Vector3 from, Vector3 dir) : from(from), dir(dir) {}
+    Ray() {}
     Vector3 from;
     Vector3 dir;
 };
