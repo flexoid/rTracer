@@ -10,6 +10,7 @@ class Scene
 {
 public:
     Scene();
+    Scene(ColorRGB);
     ~Scene();
     void AddPrimitive(Primitive*);
     void AddLight(Light*);

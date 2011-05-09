@@ -1,8 +1,8 @@
 #include "scene.h"
 
-Scene::Scene()
-{
-}
+Scene::Scene() {};
+
+Scene::Scene(ColorRGB bgColor): bgColor(bgColor) {};
 
 Scene::~Scene()
 {
