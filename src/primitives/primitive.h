@@ -13,6 +13,7 @@ public:
     virtual Vector3 Trace(Ray) = 0;
     virtual ColorRGB Color() = 0;
     Material material;
+    float reflectC, refractC;
 protected:
     ColorRGB color;
 };

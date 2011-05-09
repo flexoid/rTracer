@@ -48,15 +48,10 @@ public:
         return Vector3 (x / S , y / S, z / S);
     }
 
-    inline Vector3 operator/ (const Vector3& V2) const
-    {
-        return Vector3 (x / V2.x,  y / V2.y,  z / V2.z);
-    }
-
     inline Vector3 operator* (const Vector3& V2) const
     {
-        return Vector3 (x * V2.x,  y * V2.y,  z * V2.z);
-    }
+        return CrossProduct(V2);
+    }  
 
     inline Vector3 operator* (float S) const
     {
@@ -90,6 +85,11 @@ public:
         return V1.x*x + V1.y*y + V1.z*z;
     }
 
+    Vector3 CrossProduct( const Vector3 &V1 ) const
+    {
+        return Vector3 (y*V1.z-z*V1.y, z*V1.x-x*V1.z, x* V1.y-y*V1.x);
+    }
+
     // These require math.h for the sqrtf function
     float Length( ) const
     {
@@ -101,16 +101,12 @@ public:
         return ( *this - V1 ).Length();
     }
 
-    inline void Normalize()
+    Vector3 Norm()
     {
         float fMag = ( x*x + y*y + z*z );
-        if (fMag == 0)
-            return;
+        if (fMag == 0) return Vector3(x,y,z);
         float fMult = 1.0f/sqrtf(fMag);
-        x *= fMult;
-        y *= fMult;
-        z *= fMult;
-        return;
+        return Vector3(x*fMult, y*fMult, z*fMult);
     }
 
     static Vector3 Null()

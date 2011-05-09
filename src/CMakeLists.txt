@@ -18,7 +18,10 @@ set (SOURCES
     vector3.h
     ray.h
     light.h
+
     colorrgb.h
+    colorrgb.cpp
+
     material.h
     math_c.h
 

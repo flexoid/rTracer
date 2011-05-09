@@ -4,6 +4,7 @@
 #include <vector>
 #include "primitives/primitive.h"
 #include "light.h"
+#include "colorrgb.h"
 
 class Scene
 {
@@ -15,6 +16,7 @@ public:
 
     std::vector< Primitive* > primitives;
     std::vector< Light* > lights;
+    ColorRGB bgColor;
 };
 
 #endif // SCENE_H
