@@ -15,6 +15,7 @@ set (SOURCES
     raytracer.cpp
     raytracer.h
 
+    camera.h
     vector3.h
     ray.h
     light.h
