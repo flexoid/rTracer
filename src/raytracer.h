@@ -11,20 +11,22 @@ class RayTracer
 {
 public:
     RayTracer(Scene*);
-    Primitive* Trace(Ray ray, Vector3& IntersectPoint);
-    bool InShadow(Vector3 point, Light* light);
     ColorRGB Color(Ray);
 
 private:
-    float PhongC, LambertC, ReflectC, RefractC;
-    Scene* scene;
+    Primitive* Trace(Ray ray, Vector3& IntersectPoint);
+    bool InShadow(Vector3 point, Light* light);
+
     Vector3 Refract(Primitive* primitive, Vector3 vector, Vector3 point);
     Vector3 Reflect(Primitive* primitive, Vector3 vector, Vector3 point);
+
     ColorRGB RefractColor(Ray, Vector3, Primitive*);
     ColorRGB ReflectColor(Ray, Vector3, Primitive*);
     ColorRGB DiffusePhongColor(Ray, Vector3, Primitive*);
     ColorRGB DiffuseLambertColor(Ray, Vector3, Primitive*);
 
+    float PhongC, LambertC, ReflectC, RefractC;
+    Scene* scene;
 };
 
 #endif // RAYTRACER_H

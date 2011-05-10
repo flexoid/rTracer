@@ -6,7 +6,7 @@
 class Camera
 {
 public:
-    Camera(Vector3 from, Vector3 to, float w, float h)
+    Camera(Vector3 from, Vector3 to, float w, float h) : width(w), height(h)
     {
         SetParametrs(from,to,w,h);
     }
@@ -22,7 +22,7 @@ public:
         down = b*h;
         eye = from;
     }
-
+    float width, height;
     Vector3 eye;
     Vector3 lt;
     Vector3 right;

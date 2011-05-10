@@ -19,6 +19,10 @@ set (SOURCES
     vector3.h
     ray.h
     light.h
+    pixel.h
+
+    screen.h
+    screen.cpp
 
     colorrgb.h
     colorrgb.cpp
