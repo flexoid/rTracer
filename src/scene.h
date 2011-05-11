@@ -5,6 +5,7 @@
 #include "primitives/primitive.h"
 #include "light.h"
 #include "colorrgb.h"
+#include "camera.h"
 
 class Scene
 {
@@ -14,9 +15,11 @@ public:
     ~Scene();
     void AddPrimitive(Primitive*);
     void AddLight(Light*);
+    void AddCamera(Camera*);
 
     std::vector< Primitive* > primitives;
     std::vector< Light* > lights;
+    Camera* camera;
     ColorRGB bgColor;
 };
 
