@@ -9,11 +9,17 @@ Scene::~Scene()
     std::vector< Primitive* >::iterator ip;
     ip = primitives.begin();
     while (ip != primitives.end())
+    {
         delete *ip;
+        ip++;
+    }
     std::vector< Light* >::iterator il;
     il = lights.begin();
     while (il != lights.end())
+    {
         delete *il;
+        il++;
+    }
 }
 
 void Scene::AddPrimitive(Primitive* primitive)

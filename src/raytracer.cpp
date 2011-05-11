@@ -65,6 +65,7 @@ Primitive* RayTracer::Trace(Ray ray, Vector3 &IntersectPoint)
             IntersectPoint = point;
             primitive = prim;
         }
+        i++;
     }
     if (IntersectPoint != Vector3::Null())
         return primitive;
@@ -90,6 +91,7 @@ ColorRGB RayTracer::DiffuseLambertColor(Ray ray, Vector3 point, Primitive* primi
 	if (InShadow(point, light)) continue;
 	float cos = -primitive->Norm(point).DotProduct((point-light->pos).Norm());
 	Color+=light->power*cos;
+        i++;
     }
     return (primitive->Color())*Color*LambertC;
 }
@@ -105,6 +107,7 @@ ColorRGB RayTracer::DiffusePhongColor(Ray ray, Vector3 point, Primitive* primiti
 	if (InShadow(point, light)) continue;
 	float vcos = -ray.dir.DotProduct(Reflect(primitive, (point - light->pos).Norm(), primitive->Norm(point)));
 	if (vcos>0) Color+=light->power*pow(vcos,primitive->material.phong);
+        i++;
     }
     return (primitive->Color())*Color*PhongC;
 }
