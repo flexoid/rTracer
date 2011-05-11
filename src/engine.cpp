@@ -8,8 +8,10 @@ Engine::Engine(int width, int height)
     running = false;
 }
 
-int Engine::Init()
+int Engine::Init(Screen* screen)
 {
+    this->screen = screen;
+
     // Инициализация SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
     {
@@ -19,10 +21,10 @@ int Engine::Init()
     atexit(SDL_Quit);
 
     // Создаем поверхность для отрисовки
-    screen = SDL_SetVideoMode(width, height, 32, SDL_HWSURFACE|SDL_DOUBLEBUF );
+    surface = SDL_SetVideoMode(width, height, 32, SDL_HWSURFACE|SDL_DOUBLEBUF );
 
     //Проверяем, создалось ли окно
-    if (screen == NULL)
+    if (surface == NULL)
     {
         printf("Unable to set %dx%d video: %s\n", width, height, SDL_GetError());
         return -1;
@@ -46,12 +48,14 @@ bool Engine::Run()
 
 int Engine::Render()
 {
-    Slock(screen);
+    Slock(surface);
 
     // Отрисовка
+    pixel px = screen->GetPixel();
+    DrawPixel(surface, px.x, px.y, px.color.r, px.color.g, px.color.b);
 
-    Sulock(screen);
-    SDL_Flip(screen);
+    Sulock(surface);
+    SDL_Flip(surface);
 }
 
 void Engine::DrawPixel(SDL_Surface *screen, int x, int y, Uint8 R, Uint8 G, Uint8 B)

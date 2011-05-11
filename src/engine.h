@@ -2,27 +2,30 @@
 #define ENGINE_H
 
 #include <SDL/SDL.h>
+#include "screen.h"
 
 class Engine
 {
 public:
     Engine(int width, int height);
-    int Init();
+    int Init(Screen* screen);
     bool Run();
     int Render();
 
-    SDL_Surface* getScreen() { return screen; }
+    SDL_Surface* getScreen() { return surface; }
 
-    void DrawPixel(SDL_Surface *screen, int x, int y, Uint8 R, Uint8 G, Uint8 B);
-    void Slock(SDL_Surface *screen);
-    void Sulock(SDL_Surface *screen);
+    void DrawPixel(SDL_Surface *surface, int x, int y, Uint8 R, Uint8 G, Uint8 B);
+    void Slock(SDL_Surface *surface);
+    void Sulock(SDL_Surface *surface);
 
 
 private:
-    SDL_Surface* screen;
+    SDL_Surface* surface;
     bool running;
 
     int width, height;
+    Screen* screen;
+
 };
 
 #endif // ENGINE_H
