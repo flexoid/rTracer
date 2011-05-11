@@ -15,9 +15,10 @@ class Screen
  private:
     int xmax, ymax;
     Screen();
-    pixel GetNext();
+    void SetNextPixel();
     Camera* cam;
     RayTracer rt;
+    pixel currentPixel;
 };
 
 #endif

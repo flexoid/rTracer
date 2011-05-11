@@ -5,13 +5,24 @@ Screen::Screen(Camera* cam, Scene* scene, int x, int y) : cam(cam), rt(RayTracer
 
 pixel Screen::GetPixel()
 {
-    pixel pix = GetNext();
+    pixel pix = currentPixel;
     pix.color = rt.Color(Ray(cam->eye, cam->lt+cam->right*pix.x*cam->width/xmax+
-			     cam->down*pix.y*cam->height/ymax));
+                              cam->down*pix.y*cam->height/ymax));
+    SetNextPixel();
     return pix;
 };
 
-pixel Screen::GetNext()
+void Screen::SetNextPixel()
 {
+    currentPixel.y+=4;
+    if (currentPixel.y >= ymax)
+    {
+        currentPixel.y = 0;
+        currentPixel.x+=4;
+    }
+    if (currentPixel.x >= xmax)
+    {
+        currentPixel.x = 0;
+    }
 };
 
