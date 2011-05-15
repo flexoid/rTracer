@@ -14,7 +14,7 @@ ColorRGB RayTracer::Color(Ray ray)
     if(prim==0)
         return scene->bgColor;
     return DiffuseLambertColor(ray, point, prim)+DiffusePhongColor(ray, point, prim)+
-	ReflectColor(ray, point, prim)+RefractColor(ray, point, prim);
+        ReflectColor(ray, point, prim)+RefractColor(ray, point, prim);
 }
 
 Vector3 RayTracer::Refract(Primitive* primitive, Vector3 vector, Vector3 point)
@@ -51,7 +51,7 @@ Vector3 RayTracer::Reflect(Primitive* primitive, Vector3 vector, Vector3 point)
 Primitive* RayTracer::Trace(Ray ray, Vector3 &IntersectPoint)
 {
     IntersectPoint = Vector3::Null();
-    Primitive* primitive;
+    Primitive* primitive = 0;
 
     std::vector< Primitive* >::iterator i;
     i = scene->primitives.begin();
@@ -82,15 +82,17 @@ bool RayTracer::InShadow(Vector3 point, Light* light)
 
 ColorRGB RayTracer::DiffuseLambertColor(Ray ray, Vector3 point, Primitive* primitive)
 {
-    float Color;
+    float Color = 0.0;
     std::vector<Light*>::iterator i;
     i = scene->lights.begin();
     while (i != scene->lights.end())
     {
 	Light* light = *i;
-	if (InShadow(point, light)) continue;
-	float cos = -primitive->Norm(point).DotProduct((point-light->pos).Norm());
-	Color+=light->power*cos;
+        if (!InShadow(point, light))
+        {
+            float cos = -primitive->Norm(point).DotProduct((point-light->pos).Norm());
+            Color+=light->power*cos;
+        }
         i++;
     }
     return (primitive->Color())*Color*LambertC;
@@ -104,9 +106,11 @@ ColorRGB RayTracer::DiffusePhongColor(Ray ray, Vector3 point, Primitive* primiti
     while (i != scene->lights.end())
     {
         Light* light = *i;
-	if (InShadow(point, light)) continue;
-	float vcos = -ray.dir.DotProduct(Reflect(primitive, (point - light->pos).Norm(), primitive->Norm(point)));
-	if (vcos>0) Color+=light->power*pow(vcos,primitive->material.phong);
+        if (!InShadow(point, light))
+        {
+            float vcos = -ray.dir.DotProduct(Reflect(primitive, (point - light->pos).Norm(), primitive->Norm(point)));
+            if (vcos>0) Color+=light->power*pow(vcos,primitive->material.phong);
+        }
         i++;
     }
     return (primitive->Color())*Color*PhongC;
