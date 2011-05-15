@@ -14,11 +14,11 @@ pixel Screen::GetPixel()
 
 void Screen::SetNextPixel()
 {
-    currentPixel.y+=4;
+    ++currentPixel.y;
     if (currentPixel.y >= ymax)
     {
         currentPixel.y = 0;
-        currentPixel.x+=4;
+        ++currentPixel.x;
     }
     if (currentPixel.x >= xmax)
     {

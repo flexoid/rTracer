@@ -18,8 +18,8 @@ public:
         Vector3 r = s.CrossProduct(Vector3(0,0,1));
         Vector3 b = s.CrossProduct(r);
         lt = from + s + r*(-w/2.0f) + b*(-h/2.0f);
-        right = r*w;
-        down = b*h;
+        right = (r*w).Norm();
+        down = (b*h).Norm();
         eye = from;
     }
     float width, height;

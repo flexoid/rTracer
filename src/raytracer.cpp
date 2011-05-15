@@ -4,11 +4,15 @@
 
 RayTracer::RayTracer(Scene* scene) : scene(scene)
 {
+	PhongC=3;
+	LambertC=3;
+	ReflectC=3;
+	RefractC=3;
 }
 
 ColorRGB RayTracer::Color(Ray ray)
 {
-    if(ray.dir==Vector3::Null()) return ColorRGB::Null();
+//    if(ray.dir==Vector3::Null()) return ColorRGB::Null();
     Vector3 point;
     Primitive* prim = Trace(ray,point);
     if(prim==0)
@@ -30,11 +34,11 @@ Vector3 RayTracer::Refract(Primitive* primitive, Vector3 vector, Vector3 point)
     }
     else 
     {
-        a = 1 / primitive->material.refractionCoeff;
+        a = 1.0f / primitive->material.refractionCoeff;
         bf = -1;
     }
 
-    float D = 1 - a*a*(1 - nv*nv);
+    float D = 1.0f - a*a*(1.0f - nv*nv);
     if (D < 0)
         return Vector3::Null();
     float b = bf*(nv*a + sqrt(D));
