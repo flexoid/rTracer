@@ -26,10 +26,10 @@ int main()
     scene->AddLight(light);
     scene->AddCamera(camera);
 
-    Screen* screen = new Screen(camera, scene, 240, 240);
+    Screen* screen = new Screen(camera, scene, 700, 700);
 
     // Создаем объект Window
-    Engine* engine = new Engine(240, 240);
+    Engine* engine = new Engine(700, 700);
     engine->Init(screen);
 
     // Цикл отрисовки
