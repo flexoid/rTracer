@@ -96,7 +96,8 @@ ColorRGB RayTracer::DiffuseLambertColor(Ray ray, Vector3 point, Primitive* primi
         {
             Vector3 dir = point - light->pos;
             float cos = -primitive->Norm(point).DotProduct(dir.Norm());
-            Color += light->power * primitive->material.lambert * cos;
+            if (cos>0)
+                Color += light->power * primitive->material.lambert * cos;
         }
         i++;
     }
