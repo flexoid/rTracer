@@ -4,21 +4,21 @@
 
 RayTracer::RayTracer(Scene* scene) : scene(scene)
 {
-	PhongC=3;
-	LambertC=3;
-	ReflectC=3;
-	RefractC=3;
+    LambertC = 7.0f;
+    PhongC = 5.0f;
+    RefractC = 0.2f;
+    ReflectC = 0.2f;
 }
 
 ColorRGB RayTracer::Color(Ray ray)
 {
-//    if(ray.dir==Vector3::Null()) return ColorRGB::Null();
+    if(ray.dir==Vector3::Null()) return ColorRGB::Null();
     Vector3 point;
     Primitive* prim = Trace(ray,point);
     if(prim==0)
         return scene->bgColor;
-    return DiffuseLambertColor(ray, point, prim)+DiffusePhongColor(ray, point, prim)+
-        ReflectColor(ray, point, prim)+RefractColor(ray, point, prim);
+    return DiffuseLambertColor(ray, point, prim) + DiffusePhongColor(ray, point, prim) +
+        ReflectColor(ray, point, prim) + RefractColor(ray, point, prim);
 }
 
 Vector3 RayTracer::Refract(Primitive* primitive, Vector3 vector, Vector3 point)
@@ -34,11 +34,11 @@ Vector3 RayTracer::Refract(Primitive* primitive, Vector3 vector, Vector3 point)
     }
     else 
     {
-        a = 1.0f / primitive->material.refractionCoeff;
+        a = 1 / primitive->material.refractionCoeff;
         bf = -1;
     }
 
-    float D = 1.0f - a*a*(1.0f - nv*nv);
+    float D = 1 - a*a*(1 - nv*nv);
     if (D < 0)
         return Vector3::Null();
     float b = bf*(nv*a + sqrt(D));
@@ -91,11 +91,12 @@ ColorRGB RayTracer::DiffuseLambertColor(Ray ray, Vector3 point, Primitive* primi
     i = scene->lights.begin();
     while (i != scene->lights.end())
     {
-	Light* light = *i;
+        Light* light = *i;
         if (!InShadow(point, light))
         {
-            float cos = -primitive->Norm(point).DotProduct((point-light->pos).Norm());
-            Color+=light->power*cos;
+            Vector3 dir = point - light->pos;
+            float cos = -primitive->Norm(point).DotProduct(dir.Norm());
+            Color += light->power * primitive->material.lambert * cos;
         }
         i++;
     }
@@ -113,7 +114,7 @@ ColorRGB RayTracer::DiffusePhongColor(Ray ray, Vector3 point, Primitive* primiti
         if (!InShadow(point, light))
         {
             float vcos = -ray.dir.DotProduct(Reflect(primitive, (point - light->pos).Norm(), primitive->Norm(point)));
-            if (vcos>0) Color+=light->power*pow(vcos,primitive->material.phong);
+            if (vcos>0) Color += light->power * vcos * primitive->material.phong;
         }
         i++;
     }

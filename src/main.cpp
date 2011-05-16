@@ -16,8 +16,8 @@ int main()
     Sphere* sph2 = new Sphere(Vector3::Null(), 1.0, ColorRGB(250, 40, 15), mat1);
     //Sphere* sph3 = new Sphere(Vector3(-6.0, 2.0, 3.0), 4.0, ColorRGB(250, 90, 40), mat3);
 
-    Light* light = new Light(Vector3(6.0, 6.0, 6.0), 11.0);
-    Camera* camera = new Camera(Vector3(5.0, 5.0, 5.0), Vector3::Null(), 2.0, 2.0);
+    Light* light = new Light(Vector3(-2.0, 10.0, 7.0), 3.0);
+    Camera* camera = new Camera(Vector3(5.0, 5.0, 5.0), Vector3::Null(), 1.0, 1.0);
 
     Scene* scene = new Scene(ColorRGB(20, 60, 75));
     //scene->AddPrimitive(sph1);
@@ -26,10 +26,10 @@ int main()
     scene->AddLight(light);
     scene->AddCamera(camera);
 
-    Screen* screen = new Screen(camera, scene, 160, 120);
+    Screen* screen = new Screen(camera, scene, 200, 200);
 
     // Создаем объект Window
-    Engine* engine = new Engine(160, 120);
+    Engine* engine = new Engine(200, 200);
     engine->Init(screen);
 
     // Цикл отрисовки

@@ -14,12 +14,12 @@ public:
 
     void SetParametrs(Vector3 from, Vector3 to, float w, float h)
     {
-        Vector3 s = to - from;
+        Vector3 s = (to - from).Norm();
         Vector3 r = s.CrossProduct(Vector3(0,0,1));
         Vector3 b = s.CrossProduct(r);
         lt = from + s + r*(-w/2.0f) + b*(-h/2.0f);
-        right = (r*w).Norm();
-        down = (b*h).Norm();
+        right = r * w;
+        down = b * h;
         eye = from;
     }
     float width, height;
