@@ -51,8 +51,14 @@ int Engine::Render()
     Slock(surface);
 
     // Отрисовка
-    pixel px = screen->GetPixel();
-    DrawPixel(surface, px.x, px.y, px.color.r, px.color.g, px.color.b);
+    Screen::Result res;
+    do
+    {
+        pixel px;
+        res = screen->GetPixel(px);
+        DrawPixel(surface, px.x, px.y, px.color.r, px.color.g, px.color.b);
+        raycount++;
+    } while (res == Screen::PixelDone);
 
     Sulock(surface);
     SDL_Flip(surface);

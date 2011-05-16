@@ -10,15 +10,18 @@
 class Screen
 {
  public:
-    Screen(Camera*,Scene*,int,int);
-    pixel GetPixel();
+    enum Result { PixelDone, CellDone, AllDone };
+
+    Screen(Camera* cam, Scene* scene, int x, int y, int cellSize = 100);
+    Result GetPixel(pixel& pix);
  private:
     int xmax, ymax;
     Screen();
-    void SetNextPixel();
+    Result SetNextPixel();
     Camera* cam;
     RayTracer rt;
     pixel currentPixel;
+    int cellx, celly, cellSize;
 };
 
 #endif
