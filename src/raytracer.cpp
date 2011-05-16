@@ -4,10 +4,10 @@
 
 RayTracer::RayTracer(Scene* scene) : scene(scene)
 {
-    LambertC = 7.0f;
-    PhongC = 5.0f;
-    RefractC = 0.2f;
-    ReflectC = 0.2f;
+    LambertC = 0.5f;
+    PhongC = 0.5f;
+    RefractC = 0.5f;
+    ReflectC = 0.5f;
 }
 
 ColorRGB RayTracer::Color(Ray ray)
@@ -86,7 +86,7 @@ bool RayTracer::InShadow(Vector3 point, Light* light)
 
 ColorRGB RayTracer::DiffuseLambertColor(Ray ray, Vector3 point, Primitive* primitive)
 {
-    float Color = 0.0;
+    float Color = 0.0f;
     std::vector<Light*>::iterator i;
     i = scene->lights.begin();
     while (i != scene->lights.end())
@@ -105,7 +105,7 @@ ColorRGB RayTracer::DiffuseLambertColor(Ray ray, Vector3 point, Primitive* primi
 
 ColorRGB RayTracer::DiffusePhongColor(Ray ray, Vector3 point, Primitive* primitive)
 {
-    float Color;
+    float Color = 0.0f;
     std::vector<Light*>::iterator i;
     i = scene->lights.begin();
     while (i != scene->lights.end())
@@ -113,7 +113,7 @@ ColorRGB RayTracer::DiffusePhongColor(Ray ray, Vector3 point, Primitive* primiti
         Light* light = *i;
         if (!InShadow(point, light))
         {
-            float vcos = -ray.dir.DotProduct(Reflect(primitive, (point - light->pos).Norm(), primitive->Norm(point)));
+            float vcos = -ray.dir.DotProduct(Reflect(primitive, (point - light->pos).Norm(), point));
             if (vcos>0) Color += light->power * vcos * primitive->material.phong;
         }
         i++;
