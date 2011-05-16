@@ -26,6 +26,11 @@ private:
     int width, height;
     Screen* screen;
 
+    // FPS
+    Uint32 startclock;
+    Uint32 deltaclock;
+    Uint32 raycount;
+
 };
 
 #endif // ENGINE_H

@@ -6,6 +6,10 @@ Engine::Engine(int width, int height)
     this->height = height;
 
     running = false;
+
+    startclock = 0;
+    deltaclock = 0;
+    raycount = 0;
 }
 
 int Engine::Init(Screen* screen)
@@ -62,6 +66,17 @@ int Engine::Render()
 
     Sulock(surface);
     SDL_Flip(surface);
+
+    deltaclock = SDL_GetTicks() - startclock;
+    if (deltaclock >= 1000)
+    {
+        static char buffer[20] = {0};
+        sprintf(buffer, "%d Rays Per Second", raycount);
+        SDL_WM_SetCaption(buffer, 0);
+        raycount = 0;
+        deltaclock = 0;
+        startclock = SDL_GetTicks();
+    }
 }
 
 void Engine::DrawPixel(SDL_Surface *screen, int x, int y, Uint8 R, Uint8 G, Uint8 B)
