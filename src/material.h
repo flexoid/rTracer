@@ -4,11 +4,13 @@
 class Material
 {
 public:
-    Material(float InLambert, float InPhong, float InTransp, float InRefractionCoeff)
-        : lambert(InLambert), phong(InPhong), transperancy(InTransp), refractionCoeff(InRefractionCoeff) {}
-    Material() : lambert(0), phong(0), transperancy(0), refractionCoeff(0) {}
+    Material(float lambert, float phong, float reflectionCoeff, float transperancy, float refractionCoeff)
+        : lambert(lambert), phong(phong), reflectionCoeff(reflectionCoeff),
+            transperancy(transperancy), refractionCoeff(refractionCoeff) {}
+    Material() : lambert(0), phong(0), reflectionCoeff(0), transperancy(0), refractionCoeff(0) {}
     float lambert;
     float phong;
+    float reflectionCoeff;
     float transperancy;
     float refractionCoeff;
 };

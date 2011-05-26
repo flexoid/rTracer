@@ -124,14 +124,14 @@ ColorRGB RayTracer::DiffusePhongColor(Ray ray, Vector3 point, Primitive* primiti
 
 ColorRGB RayTracer::RefractColor(Ray ray, Vector3 point, Primitive* primitive)
 {
-    if (ray.power*primitive->refractC<EPS)
+    if (ray.power < EPS)
 	return ColorRGB();
-    return Color(Ray(point,Refract(primitive,ray.dir,point),ray.power*primitive->refractC))*RefractC*primitive->refractC;
+    return Color(Ray(point, point + Refract(primitive, ray.dir, point), ray.power * primitive->material.refractionCoeff)) * RefractC;
 }
 
 ColorRGB RayTracer::ReflectColor(Ray ray, Vector3 point, Primitive* primitive)
 {
-    if (ray.power<EPS)
+    if (ray.power < EPS)
 	return ColorRGB();
-    return Color(Ray(point,Reflect(primitive,ray.dir,point),ray.power*primitive->reflectC))*ReflectC*primitive->reflectC;
+    return Color(Ray(point, point + Reflect(primitive, ray.dir, point), ray.power * primitive->material.reflectionCoeff)) * ReflectC;
 }
