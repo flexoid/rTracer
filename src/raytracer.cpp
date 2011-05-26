@@ -126,12 +126,20 @@ ColorRGB RayTracer::RefractColor(Ray ray, Vector3 point, Primitive* primitive)
 {
     if (ray.power < EPS)
 	return ColorRGB();
-    return Color(Ray(point, point + Refract(primitive, ray.dir, point), ray.power * primitive->material.transperancy)) * RefractC;
+    ColorRGB color(Color(Ray(point, point + Refract(primitive, ray.dir, point), ray.power * primitive->material.transperancy)));
+    if (color != scene->bgColor)
+        return color * RefractC;
+    else
+        return ColorRGB::Null();
 }
 
 ColorRGB RayTracer::ReflectColor(Ray ray, Vector3 point, Primitive* primitive)
 {
     if (ray.power < EPS)
 	return ColorRGB();
-    return Color(Ray(point, point + Reflect(primitive, ray.dir, point), ray.power * primitive->material.reflectionCoeff)) * ReflectC;
+    ColorRGB color(Color(Ray(point, point + Reflect(primitive, ray.dir, point), ray.power * primitive->material.reflectionCoeff)));
+    if (color != scene->bgColor)
+        return color * ReflectC;
+    else
+        return ColorRGB::Null();
 }
