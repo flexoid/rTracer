@@ -4,9 +4,9 @@
 
 RayTracer::RayTracer(Scene* scene) : scene(scene)
 {
-    LambertC = 0.5f;
+    LambertC = 0.8f;
     PhongC = 0.5f;
-    RefractC = 0.5f;
+    RefractC = 0.3f;
     ReflectC = 0.5f;
 }
 
@@ -18,7 +18,7 @@ ColorRGB RayTracer::Color(Ray ray)
     if(prim==0)
         return scene->bgColor;
     return DiffuseLambertColor(ray, point, prim) + DiffusePhongColor(ray, point, prim) +
-        ReflectColor(ray, point, prim) + RefractColor(ray, point, prim);
+            ReflectColor(ray, point, prim); //+ RefractColor(ray, point, prim);
 }
 
 Vector3 RayTracer::Refract(Primitive* primitive, Vector3 vector, Vector3 point)

@@ -10,17 +10,27 @@ Uint16 min(Uint16 a, Uint16 b)
 };
 
 ColorRGB ColorRGB::operator+(const ColorRGB& c2) const
-{   
-    Uint32 rr=0+r+c2.r, gg=0+g+c2.g, bb=0+b+c2.b,t;
-    if (rr>255) { gg=min(0+gg+rr-255,255); bb=min(0+bb+rr-255,255); rr=255;}
-    if (gg>255) { rr=min(0+rr+gg-255,255); bb=min(0+bb+gg-255,255); gg=255;}
-    if (bb>255) { rr=min(0+rr+bb-255,255); gg=min(0+gg+bb-255,255); bb=255;}
+{
+    Uint32 rr=(Uint32) r+(Uint32) c2.r, gg=(Uint32) g+(Uint32) c2.g, bb=(Uint32) b+(Uint32) c2.b;
+    if (rr>255)
+        { gg=min(0+gg+rr-255,255); bb=min(0+bb+rr-255,255); rr=255;}
+    if (gg>255)
+        { rr=min(0+rr+gg-255,255); bb=min(0+bb+gg-255,255); gg=255;}
+    if (bb>255)
+        { rr=min(0+rr+bb-255,255); gg=min(0+gg+bb-255,255); bb=255;}
     return ColorRGB(rr,gg,bb);
-};
+ };
 
 ColorRGB ColorRGB::operator*(const float k) const
 {
-    return ColorRGB(k*r, k*g, k*b);
+    Uint32 rr=(Uint32) r*k, gg=(Uint32) g*k, bb=(Uint32) b*k;
+    if (rr>255)
+        { gg=min(0+gg+rr-255,255); bb=min(0+bb+rr-255,255); rr=255;}
+    if (gg>255)
+        {rr=min(0+rr+gg-255,255); bb=min(0+bb+gg-255,255); gg=255;}
+    if (bb>255)
+        { rr=min(0+rr+bb-255,255); gg=min(0+gg+bb-255,255); bb=255;}
+    return ColorRGB(rr,gg,bb);
 };
 
 void ColorRGB::operator+=(const ColorRGB& c2)
