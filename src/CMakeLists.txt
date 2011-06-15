@@ -48,5 +48,9 @@ if (NOT SDL_FOUND)
     message(FATAL_ERROR "SDL not found!")
 endif (NOT SDL_FOUND)
 
+if (WIN32)
+    set(CMAKE_EXE_LINKER_FLAGS "-mwindows")
+endif (WIN32)
+
 add_executable (${PROJECT} ${SOURCES})
 target_link_libraries(${PROJECT} ${SDL_LIBRARY})
