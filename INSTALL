@@ -2,12 +2,27 @@ Steps to build and run:
 
 Linux:
 
-   $ git clone git@github.com:flexoid/rTracer.git
-   $ cd rTracer/src
-   $ cmake .
-   $ make
-   # ../bin/rTracer
+      $ git clone git@github.com:flexoid/rTracer.git
+      $ cd rTracer/src
+      $ cmake .
+      $ make
+      $ ../bin/rTracer
 
 Windows:
 
-   TODO
+   MSYS:
+      $ git clone git@github.com:flexoid/rTracer.git
+      $ cd rTracer/src
+      $ cmake -G "MSYS Makefiles" .
+      $ make
+      $ ../bin/rTracer.exe
+
+   MinGW:
+      $ git clone git@github.com:flexoid/rTracer.git
+      $ cd rTracer\src
+      $ cmake -G "MinGW Makefiles" .
+      $ mingw32-make
+      $ ..\bin\rTracer.exe
+
+   Visual Studio:
+      TODO
