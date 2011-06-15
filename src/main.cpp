@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include <SDL/SDL.h>
 
+#ifdef WIN32
+#undef main
+#endif    //WIN32
+
 #include "engine.h"
 #include "scene.h"
 #include "primitives/sphere.h"
