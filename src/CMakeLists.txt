@@ -52,5 +52,9 @@ if (WIN32)
     set(CMAKE_EXE_LINKER_FLAGS "-mwindows")
 endif (WIN32)
 
+if(NOT CMAKE_BUILD_TYPE EQUAL Debug)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
+endif(NOT CMAKE_BUILD_TYPE EQUAL Debug)
+
 add_executable (${PROJECT} ${SOURCES})
 target_link_libraries(${PROJECT} ${SDL_LIBRARY})
