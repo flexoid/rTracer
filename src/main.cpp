@@ -24,7 +24,7 @@ int main()
     Light* light2 = new Light(Vector3(5.0, 5.0, 5.0), 4.0);
     Camera* camera = new Camera(Vector3(5.0, 5.0, 4.0), Vector3::Null(), 1.0, 1.0);
 
-    Scene* scene = new Scene(ColorRGB(20, 60, 75));
+    Scene* scene = new Scene(ColorRGB::Null());
     scene->AddPrimitive(sph1);
     scene->AddPrimitive(sph2);
     scene->AddPrimitive(sph3);
