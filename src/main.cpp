@@ -10,6 +10,9 @@
 #include "scene.h"
 #include "primitives/sphere.h"
 
+#define HEIGHT 700
+#define WIDTH 700
+
 int main()
 {
     Material mat1(0.1, 0.3, 0.5, 0.3, 0.8);
@@ -31,10 +34,10 @@ int main()
     scene->AddLight(light);
     scene->AddCamera(camera);
 
-    Screen* screen = new Screen(camera, scene, 700, 700);
+    Screen* screen = new Screen(camera, scene, HEIGHT, WIDTH);
 
     // Создаем объект Window
-    Engine* engine = new Engine(700, 700);
+    Engine* engine = new Engine(HEIGHT, WIDTH);
     engine->Init(screen);
 
     // Цикл отрисовки
