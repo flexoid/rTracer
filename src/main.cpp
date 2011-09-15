@@ -15,17 +15,17 @@
 
 int main()
 {
-    Material mat1(0.1, 0.3, 0.5, 0.3, 0.8);
-    Material mat2(0.2, 0.3, 0.2, 0.3, 0.8);
-    Material mat3(0.3, 0.3, 0.4, 0.2, 0.8);
+    Material mat1(0.1f, 0.3f, 0.5f, 0.3f, 0.8f);
+    Material mat2(0.2f, 0.3f, 0.2f, 0.3f, 0.8f);
+    Material mat3(0.3f, 0.3f, 0.4f, 0.2f, 0.8f);
 
     Sphere* sph1 = new Sphere(Vector3(2.0f, 0.0f, 0.0f), 1.0f, ColorRGB(250, 0, 0), mat1);
     Sphere* sph2 = new Sphere(Vector3(0.0f, 0.0f, 0.0f), 1.0f, ColorRGB(0, 240, 0), mat2);
     Sphere* sph3 = new Sphere(Vector3(0.0f, 2.0f, 0.0f), 1.0f, ColorRGB(0, 0, 240), mat3);
 
-    Light* light = new Light(Vector3(0.5, 0.5, 11.0), 4.0);
-    Light* light2 = new Light(Vector3(5.0, 5.0, 5.0), 4.0);
-    Camera* camera = new Camera(Vector3(5.0, 5.0, 4.0), Vector3::Null(), 1.0, 1.0);
+    Light* light = new Light(Vector3(0.5f, 0.5f, 11.0f), 4.0f);
+    Light* light2 = new Light(Vector3(5.0f, 5.0f, 5.0f), 4.0f);
+    Camera* camera = new Camera(Vector3(5.0f, 5.0f, 4.0f), Vector3::Null(), 1.0f, 1.0f);
 
     Scene* scene = new Scene(ColorRGB::Null());
     scene->AddPrimitive(sph1);

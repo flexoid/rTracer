@@ -70,7 +70,7 @@ int Engine::Render()
     deltaclock = SDL_GetTicks() - startclock;
     if (deltaclock >= 1000)
     {
-        static char buffer[20] = {0};
+        static char buffer[256] = {0};
         sprintf(buffer, "%d Rays Per Second", raycount);
         SDL_WM_SetCaption(buffer, 0);
         raycount = 0;
