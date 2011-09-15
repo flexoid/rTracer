@@ -12,7 +12,7 @@ RayTracer::RayTracer(Scene* scene) : scene(scene)
 
 ColorRGB RayTracer::Color(Ray ray)
 {
-    if(ray.dir==Vector3::Null()) return ColorRGB::Null();
+    if(ray.dir==Vector3::Null() || ray.power < EPS) return ColorRGB::Null();
     Vector3 point;
     Primitive* prim = Trace(ray,point);
     if(prim==0)
