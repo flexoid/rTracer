@@ -64,7 +64,7 @@ Vector3 RayTracer::Refract(Primitive* primitive, Vector3 vector, Vector3 point)
         sina=-sina;
         if (sina>n2) return Vector3::Null();
     }
-    return (vector+norm*(sqrt((n2*n2/n1*n1-1)/sina+1)-1)*sina)*n1/n2;
+    return (vector+norm*(sqrt((n2*n2/n1*n1-1)/sina/sina+1)-1)*sina)*n1/n2;
 }
 
 Vector3 RayTracer::Reflect(Primitive* primitive, Vector3 vector, Vector3 point)
