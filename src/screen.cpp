@@ -12,7 +12,7 @@ Screen::Result Screen::GetPixel(pixel& pix)
     pix = currentPixel;
     Vector3 x = cam->right * (pix.x / float(xmax));
     Vector3 y = cam->down * (pix.y / float(ymax));
-    Vector3 scr = cam->lt + (x + y);
+    Vector3 scr = cam->lt + x + y;
     pix.color = rt.Color(Ray(cam->eye, scr));
     return SetNextPixel();
 };

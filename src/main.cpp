@@ -15,6 +15,8 @@
 
 int main()
 {
+
+/*
     Material mat1(0.1f, 0.3f, 0.5f, 0.3f, 0.8f);
     Material mat2(0.2f, 0.3f, 0.2f, 0.3f, 0.8f);
     Material mat3(0.3f, 0.3f, 0.4f, 0.2f, 0.8f);
@@ -32,6 +34,17 @@ int main()
     scene->AddPrimitive(sph2);
     scene->AddPrimitive(sph3);
     scene->AddLight(light);
+    scene->AddCamera(camera);
+*/
+    Material mat1(0.5f, 0.5f, 0.5f, 0.0f, 0.0f);
+    Material mat2(0.0f, 0.1f, 0.0f, 0.9f, 0.9f);
+
+    Scene* scene = new Scene(ColorRGB::Null());
+
+    scene->AddPrimitive(new Sphere(Vector3(0.0f,0.0f,0.0f),1.0f,ColorRGB(100,100,  0),mat1));
+    scene->AddPrimitive(new Sphere(Vector3(3.0f,0.0f,0.0f),0.5f,ColorRGB( 50,230, 50),mat2));
+    scene->AddLight(new Light(Vector3(2.0f,0.0f,0.0f),7.5f));
+    Camera* camera = new Camera(Vector3(5.0f,0.0f,0.0f),Vector3::Null(),1.0f,1.0f);
     scene->AddCamera(camera);
 
     Screen* screen = new Screen(camera, scene, HEIGHT, WIDTH);
