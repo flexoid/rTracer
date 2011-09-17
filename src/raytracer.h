@@ -25,7 +25,7 @@ private:
     ColorRGB DiffusePhongColor(Ray, Vector3, Primitive*);
     ColorRGB DiffuseLambertColor(Ray, Vector3, Primitive*);
 
-    float PhongC, LambertC, ReflectC, RefractC;
+    float PhongC, LambertC, ReflectC, RefractC, ReduceLightPowerC;
     Scene* scene;
 };
 

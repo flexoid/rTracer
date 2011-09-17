@@ -8,6 +8,7 @@ RayTracer::RayTracer(Scene* scene) : scene(scene)
     PhongC = 0.5f;
     RefractC = 0.3f;
     ReflectC = 0.5f;
+    ReduceLightPowerC = 0.13f;
 }
 
 ColorRGB RayTracer::Color(Ray ray)
@@ -118,8 +119,11 @@ ColorRGB RayTracer::DiffuseLambertColor(Ray ray, Vector3 point, Primitive* primi
         {
             Vector3 dir = point - light->pos;
             float cos = -primitive->Norm(point).DotProduct(dir.Norm());
+            float power = light->power - dir.Length()*ReduceLightPowerC;
+            if (power<0)
+                power=0;
             if (cos>0)
-                Color += light->power * primitive->material.lambert * cos;
+                Color += power * primitive->material.lambert * cos;
         }
         i++;
     }
@@ -137,7 +141,10 @@ ColorRGB RayTracer::DiffusePhongColor(Ray ray, Vector3 point, Primitive* primiti
         if (!InShadow(point, light))
         {
             float vcos = -ray.dir.DotProduct(Reflect(primitive, (point - light->pos).Norm(), point));
-            if (vcos>0) Color += light->power * vcos * primitive->material.phong;
+            float power = light->power - (point - light->pos).Length()*ReduceLightPowerC;
+            if (power<0)
+                power=0;
+            if (vcos>0) Color += power * vcos * primitive->material.phong;
         }
         i++;
     }
