@@ -13,7 +13,7 @@ public:
     Vector3( float InX, float InY, float InZ ) : x( InX ), y( InY ), z( InZ )
     {
     }
-    Vector3( ) : x(0), y(0), z(0)
+    Vector3( ) : x(0.0f), y(0.0f), z(0.0f)
     {
     }
 
@@ -111,7 +111,7 @@ public:
 
     static Vector3 Null()
     {
-        return Vector3(0, 0, 0);
+        return Vector3(0.0f, 0.0f, 0.0f);
     }
 };
 #endif // VECTOR3_H
