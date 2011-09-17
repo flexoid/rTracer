@@ -15,7 +15,7 @@ public:
 
 private:
     Primitive* Trace(Ray ray, Vector3& IntersectPoint);
-    bool InShadow(Vector3 point, Light* light);
+    bool InShadow(Vector3 point, Primitive* pointPrim, Light* light);
 
     Vector3 Refract(Primitive* primitive, Vector3 vector, Vector3 point);
     Vector3 Reflect(Primitive* primitive, Vector3 vector, Vector3 point);

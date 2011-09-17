@@ -50,7 +50,7 @@ int main()
     scene->AddPrimitive(new Sphere(Vector3(3.0f,0.0f,0.0f),0.5f,ColorRGB( 50,230, 50),mat1));
     scene->AddLight(new Light(Vector3(0.0f,3.0f,0.0f),2.0f));
     scene->AddLight(new Light(Vector3(0.0f,0.0f,8.0f),3.0f));
-    scene->AddLight(new Light(Vector3(3.0f,0.0f,0.0f),2.0f));
+    scene->AddLight(new Light(Vector3(4.0f,0.0f,0.0f),2.0f));
     Camera* camera = new Camera(Vector3(10.0f,1.0f,5.0f),Vector3::Null(),1.0f,1.0f);
     scene->AddCamera(camera);
     scene->AddPrimitive(new Plane(Vector3(0.0f, 0.0, -1.0), Vector3(0.0f, 0.0f, 1.0f), ColorRGB( 60,60, 50), mat3));

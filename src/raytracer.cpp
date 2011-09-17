@@ -100,11 +100,11 @@ Primitive* RayTracer::Trace(Ray ray, Vector3 &IntersectPoint)
         return 0;
 }
 
-bool RayTracer::InShadow(Vector3 point, Light* light)
+bool RayTracer::InShadow(Vector3 point, Primitive* pointPrim, Light* light)
 {
     Vector3 p;
     Primitive* primitive = Trace(Ray(light->pos, point), p);
-    return !primitive;
+    return primitive && primitive != pointPrim;
 }
 
 ColorRGB RayTracer::DiffuseLambertColor(Ray ray, Vector3 point, Primitive* primitive)
@@ -115,7 +115,7 @@ ColorRGB RayTracer::DiffuseLambertColor(Ray ray, Vector3 point, Primitive* primi
     while (i != scene->lights.end())
     {
         Light* light = *i;
-        if (!InShadow(point, light))
+        if (!InShadow(point, primitive, light))
         {
             Vector3 dir = point - light->pos;
             float cos = -primitive->Norm(point).DotProduct(dir.Norm());
@@ -138,7 +138,7 @@ ColorRGB RayTracer::DiffusePhongColor(Ray ray, Vector3 point, Primitive* primiti
     while (i != scene->lights.end())
     {
         Light* light = *i;
-        if (!InShadow(point, light))
+        if (!InShadow(point, primitive, light))
         {
             float vcos = -ray.dir.DotProduct(Reflect(primitive, (point - light->pos).Norm(), point));
             float power = light->power - (point - light->pos).Length()*ReduceLightPowerC;
