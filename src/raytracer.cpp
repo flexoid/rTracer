@@ -17,8 +17,8 @@ ColorRGB RayTracer::Color(Ray ray)
     Primitive* prim = Trace(ray,point);
     if(prim==0)
         return scene->bgColor;
-    return DiffuseLambertColor(ray, point, prim) + DiffusePhongColor(ray, point, prim) +
-            ReflectColor(ray, point, prim) + RefractColor(ray, point, prim);
+    return (DiffuseLambertColor(ray, point, prim) + DiffusePhongColor(ray, point, prim) +
+            ReflectColor(ray, point, prim) + RefractColor(ray, point, prim))*ray.power;
 }
 
 /*
