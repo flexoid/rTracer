@@ -105,7 +105,7 @@ float RayTracer::Shadow(Vector3 point, Primitive* pointPrim, Light* light)
     Vector3 p;
     Primitive* primitive = Trace(Ray(light->pos, point), p);
     if (primitive && primitive != pointPrim)
-        return 0.0f;
+        return primitive->material.transperancy;
     else
         return 1.0f;
 }
