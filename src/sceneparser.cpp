@@ -53,7 +53,6 @@ Sphere* SceneParser::ParseSphere(const char *str)
 
 Prism* SceneParser::ParsePrism(const char *str)
 {
-    printf("%s\n", str);
     float f[16];
     int i[4];
     sscanf(str, "%f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %d %d %d %d",
