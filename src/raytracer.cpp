@@ -6,7 +6,7 @@ RayTracer::RayTracer(Scene* scene) : scene(scene)
 {
     LambertC = 0.8f;
     PhongC = 0.5f;
-    RefractC = 0.3f;
+    RefractC = 1.5f;
     ReflectC = 0.5f;
     ReduceLightPowerC = 0.13f;
 }
