@@ -46,6 +46,13 @@ bool Engine::Run()
     {
         if (Event.type == SDL_QUIT)
             return false;
+        else if (Event.type == SDL_KEYDOWN)
+        {
+            if (Event.key.keysym.sym == SDLK_F11)
+            {
+                MakeScreenshot();
+            }
+        }
     }
     return true;
 }
@@ -141,5 +148,14 @@ void Engine::Sulock(SDL_Surface *screen)
     {
         SDL_UnlockSurface(screen);
     }
+}
+
+void Engine::MakeScreenshot()
+{
+    time_t seconds = time(NULL);
+    char buffer[64];
+    tm* timeinfo = localtime(&seconds);
+    strftime(buffer, sizeof(buffer), "rTracer_%Y-%m-%d_%H-%M-%S.bmp", timeinfo);
+    SDL_SaveBMP(surface, buffer);
 }
 

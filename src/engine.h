@@ -2,6 +2,7 @@
 #define ENGINE_H
 
 #include <SDL/SDL.h>
+#include <ctime>
 #include "screen.h"
 
 class Engine
@@ -14,12 +15,12 @@ public:
 
     SDL_Surface* getScreen() { return surface; }
 
-    void DrawPixel(SDL_Surface *surface, int x, int y, Uint8 R, Uint8 G, Uint8 B);
+private:
     void Slock(SDL_Surface *surface);
     void Sulock(SDL_Surface *surface);
+    void DrawPixel(SDL_Surface *surface, int x, int y, Uint8 R, Uint8 G, Uint8 B);
+    void MakeScreenshot();
 
-
-private:
     SDL_Surface* surface;
     bool running;
 
