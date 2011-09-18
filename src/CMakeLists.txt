@@ -17,6 +17,9 @@ set (SOURCES
     scene.cpp
     scene.h
 
+    sceneparser.cpp
+    sceneparser.h
+
     raytracer.cpp
     raytracer.h
 

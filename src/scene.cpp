@@ -24,15 +24,18 @@ Scene::~Scene()
 
 void Scene::AddPrimitive(Primitive* primitive)
 {
-    primitives.push_back(primitive);
+    if (primitive)
+        primitives.push_back(primitive);
 }
 
 void Scene::AddLight(Light* light)
 {
-    lights.push_back(light);
+    if (light)
+        lights.push_back(light);
 }
 
 void Scene::AddCamera(Camera* camera)
 {
-    this->camera = camera;
+    if (camera)
+        this->camera = camera;
 }
