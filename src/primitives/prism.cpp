@@ -1,4 +1,5 @@
 #include "prism.h"
+#include "math.h"
 #include "../math_c.h"
 
 Prism::Prism(Vector3 point1, Vector3 point2, Vector3 point3, Vector3 point4, Vector3 dir, float heigth, ColorRGB color, Material material)
@@ -29,6 +30,7 @@ Prism::Prism(Vector3 point1, Vector3 point2, Vector3 point3, Vector3 point4, Vec
     for(int i=0;i<6;i++)
         faces[i].D = faces[i].norm.DotProduct(faces[i].points[0]);
 
+
     this->color = color;
     this->material = material;
 }
@@ -38,7 +40,7 @@ Vector3 Prism::Norm(Vector3 point)
     Vector3 norm = Vector3::Null();
     for(int i=0; i<6; i++)
     {
-        if (abs(faces[i].norm.x*point.x+faces[i].norm.y*point.y+faces[i].norm.z*point.z-faces[i].D)<EPS)
+        if (fabs(faces[i].norm.DotProduct(point)-faces[i].D)<EPS)
         {
             norm = faces[i].norm;
         }
@@ -73,11 +75,11 @@ Vector3 Prism::Trace(Ray ray)
 bool Prism::isInside(Vector3 point, Face face)
 {
     Vector3 points[4]=face.points;
-    if (abs(face.norm.z)>EPS)
+    if (fabs(face.norm.z)>EPS)
     {
         points[0].z=0; points[1].z=0; points[2].z=0; points[3].z=0; point.z=0;
     }
-    else if (abs(face.norm.x)>EPS)
+    else if (fabs(face.norm.x)>EPS)
     {
         points[0].x=points[0].z; points[1].x=points[1].z; points[2].x=points[2].z; points[3].x=points[3].z; point.x=point.z;
         points[0].z=0; points[1].z=0; points[2].z=0; points[3].z=0; point.z=0;
