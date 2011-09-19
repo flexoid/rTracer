@@ -1,14 +1,14 @@
 ; Scene color
 0 0 0
 
-; material <lambert> <phong> <reflectionCoeff> <transperancy> <refractionCoeff>
+; material <id> <lambert> <phong> <reflectionCoeff> <transperancy> <refractionCoeff>
 material 1 0.2 0.2 0.0 0.6 1.0
 material 2 0.5 0.1 1.0 0.0 0.0
 material 3 0.2 0.6 0.0 0.0 1.0
 
-; sphere <(center)> <radius> <(color)> <material>
-; plane <(point)> <(norm)> <(color)> <material>
-; prism <(point1)> <(point2)> <(point3)> <(point4)> <(dir)> <height> <(color)> <material>
+; sphere <(center)> <radius> <(color)> <id_material>
+; plane <(point)> <(norm)> <(color)> <id_material>
+; prism <(point1)> <(point2)> <(point3)> <(point4)> <(dir)> <height> <(color)> <id_material>
 sphere 0.0 1.0 0.0 1.0 50 90 80 1
 plane 0.0 0.0 -1.0 0.0 0.0 1.0 60 60 50 2
 prism -2.0 0.5 0.0 -2.0 -0.5 0.0 -1.0 -0.5 0.0 -1.0 0.5 0.0 0.0 0.0 1.0 1.0 20 200 50 3
