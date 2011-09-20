@@ -36,7 +36,7 @@ Vector3 Sphere::Trace(Ray ray)
     return Vector3(ray.from.x+t*ray.dir.x,ray.from.y+t*ray.dir.y,ray.from.z+t*ray.dir.z);
 }
 
-ColorRGB Sphere::Color()
+ColorRGB Sphere::Color(Vector3 point)
 {
     return color;
 }

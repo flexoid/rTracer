@@ -129,7 +129,7 @@ ColorRGB RayTracer::DiffuseLambertColor(Ray ray, Vector3 point, Primitive* primi
 
         i++;
     }
-    return (primitive->Color())*Color*LambertC;
+    return (primitive->Color(point))*Color*LambertC;
 }
 
 ColorRGB RayTracer::DiffusePhongColor(Ray ray, Vector3 point, Primitive* primitive)
@@ -149,7 +149,7 @@ ColorRGB RayTracer::DiffusePhongColor(Ray ray, Vector3 point, Primitive* primiti
 
         i++;
     }
-    return (primitive->Color())*Color*PhongC;
+    return (primitive->Color(point))*Color*PhongC;
 }
 
 ColorRGB RayTracer::RefractColor(Ray ray, Vector3 point, Primitive* primitive)

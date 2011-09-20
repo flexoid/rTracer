@@ -10,7 +10,7 @@ public:
 
     virtual Vector3 Norm(Vector3 point);
     virtual Vector3 Trace(Ray);
-    virtual ColorRGB Color();
+    virtual ColorRGB Color(Vector3 point);
 private:
     Vector3 point;
     Vector3 norm;

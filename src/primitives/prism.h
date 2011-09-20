@@ -10,7 +10,7 @@ public:
 
     virtual Vector3 Norm(Vector3 point);
     virtual Vector3 Trace(Ray);
-    virtual ColorRGB Color();
+    virtual ColorRGB Color(Vector3 point);
 private:
     struct Face{
       Vector3 points[4];
@@ -19,7 +19,6 @@ private:
     };
     bool isInside(Vector3 point, Face face);
     Face faces[6];
-    //Vector3 points[8];
 };
 
 #endif // PRISM_H

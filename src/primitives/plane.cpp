@@ -30,7 +30,7 @@ Vector3 Plane::Trace(Ray ray)
     return ray.from + ray.dir * t;
 }
 
-ColorRGB Plane::Color()
+ColorRGB Plane::Color(Vector3 point)
 {
     return color;
 }

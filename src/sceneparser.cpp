@@ -31,6 +31,8 @@ Scene* SceneParser::LoadScene(const char *filename)
                 scene->AddPrimitive(ParsePlane(str));
             else if (strcmp(type, "prism") == 0)
                 scene->AddPrimitive(ParsePrism(str));
+            else if (strcmp(type, "textplane") == 0)
+                scene->AddPrimitive(ParseTextPlane(str));
         }
         fclose(file);
         return scene;
@@ -75,6 +77,18 @@ Plane* SceneParser::ParsePlane(const char *str)
     Material* mat = materials.find(i[3])->second;
     if (mat)
         return new Plane(Vector3(f[0], f[1], f[2]), Vector3(f[3], f[4], f[5]), ColorRGB(i[0], i[1], i[2]), *mat);
+    else
+        return 0;
+}
+
+TextureHPlane* SceneParser::ParseTextPlane(const char* str)
+{
+    float f;
+    int i;
+    sscanf(str, "%f %d", &f, &i);
+    Material* mat = materials.find(i)->second;
+    if (mat)
+        return new TextureHPlane(f,*mat);
     else
         return 0;
 }

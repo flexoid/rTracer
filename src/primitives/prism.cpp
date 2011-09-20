@@ -107,7 +107,7 @@ bool Prism::isInside(Vector3 point, Face face)
         return false;
 }
 
-ColorRGB Prism::Color()
+ColorRGB Prism::Color(Vector3 point)
 {
     return color;
 }

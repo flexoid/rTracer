@@ -12,6 +12,7 @@
 #include "primitives/sphere.h"
 #include "primitives/plane.h"
 #include "primitives/prism.h"
+#include "primitives/texturehplane.h"
 
 #define HEIGHT 700
 #define WIDTH 700
@@ -19,7 +20,7 @@
 int main()
 {
     SceneParser* sp = new SceneParser;
-    Scene* scene = sp->LoadScene("/tmp/scene1.dat");
+    Scene* scene = sp->LoadScene("../scenes/scene1.dat");
     delete sp;
 
     Screen* screen = new Screen(scene->camera, scene, HEIGHT, WIDTH);

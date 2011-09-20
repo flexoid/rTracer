@@ -11,6 +11,7 @@
 #include "primitives/sphere.h"
 #include "primitives/plane.h"
 #include "primitives/prism.h"
+#include "primitives/texturehplane.h"
 
 class SceneParser
 {
@@ -21,6 +22,7 @@ private:
     Prism* ParsePrism(const char* str);
     Plane* ParsePlane(const char* str);
     Sphere* ParseSphere(const char* str);
+    TextureHPlane* ParseTextPlane(const char* str);
 
     Light* ParseLight(const char* str);
     Camera* ParseCamera(const char* str);

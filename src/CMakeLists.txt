@@ -47,7 +47,11 @@ set (SOURCES
     primitives/plane.h
 
     primitives/prism.cpp
-    primitives/prism.h)
+    primitives/prism.h
+
+    primitives/texturehplane.cpp
+    primitives/texturehplane.h
+)
 
 set (EXECUTABLE_OUTPUT_PATH ../bin)
 
