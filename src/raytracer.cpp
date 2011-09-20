@@ -100,14 +100,14 @@ Primitive* RayTracer::Trace(Ray ray, Vector3 &IntersectPoint)
         return 0;
 }
 
-float RayTracer::Shadow(Vector3 point, Primitive* pointPrim, Light* light)
+float RayTracer::Shading(Vector3 point, Primitive* pointPrim, Light* light)
 {
     Vector3 p;
     Primitive* primitive = Trace(Ray(light->pos, point), p);
     if (primitive && primitive != pointPrim)
-        return primitive->material.transperancy;
+        return 1.0f - primitive->material.transperancy;
     else
-        return 1.0f;
+        return 0.0f;
 }
 
 ColorRGB RayTracer::DiffuseLambertColor(Ray ray, Vector3 point, Primitive* primitive)
@@ -125,7 +125,7 @@ ColorRGB RayTracer::DiffuseLambertColor(Ray ray, Vector3 point, Primitive* primi
         if (power<0)
             power=0;
         if (cos>0)
-            Color += power * primitive->material.lambert * cos * Shadow(point, primitive, light);
+            Color += power * primitive->material.lambert * cos * (1.0f -Shading(point, primitive, light));
 
         i++;
     }
@@ -145,7 +145,7 @@ ColorRGB RayTracer::DiffusePhongColor(Ray ray, Vector3 point, Primitive* primiti
         float power = light->power - (point - light->pos).Length()*ReduceLightPowerC;
         if (power<0)
             power=0;
-        if (vcos>0) Color += power * vcos * primitive->material.phong * Shadow(point, primitive, light);
+        if (vcos>0) Color += power * vcos * primitive->material.phong * (1.0f - Shading(point, primitive, light));
 
         i++;
     }
