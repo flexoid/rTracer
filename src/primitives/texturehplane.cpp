@@ -7,7 +7,8 @@ TextureHPlane::TextureHPlane(float height, Material material) : Plane(Vector3(0.
 ColorRGB TextureHPlane::Color(Vector3 point)
 {
 
-    if ( ( (int) trunc(point.x/2.0)&1) || ( (int) trunc(point.y/2.0)&1) )
+    if (( ( ((int) trunc(point.x/2.0)+(point.x<0?1:0))&1) && ( ( (int) trunc(point.y/2.0)+(point.y<0?1:0))&1) ) ||
+        ( !( ((int) trunc(point.x/2.0)+(point.x<0?1:0))&1) && !( ( (int) trunc(point.y/2.0)+(point.y<0?1:0))&1) ))
         return ColorRGB(255,255,255);
     else
         return ColorRGB(0,0,0);
