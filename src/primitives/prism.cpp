@@ -10,22 +10,22 @@ Prism::Prism(Vector3 point1, Vector3 point2, Vector3 point3, Vector3 point4, Vec
     points[4] = point1+dir; points[5] = point2+dir; points[6] = point3+dir; points[7] = point4+dir;
 
     faces[0].points[0] = points[0]; faces[0].points[1] = points[1]; faces[0].points[2] = points[2]; faces[0].points[3] = points[3];
-    faces[0].norm = ((faces[0].points[0]-faces[0].points[3]).CrossProduct(faces[0].points[0]-faces[0].points[1])).Norm();
+    faces[0].norm = ((faces[0].points[0]-faces[0].points[1]).CrossProduct(faces[0].points[0]-faces[0].points[3])).Norm();
 
     faces[1].points[0] = points[0]; faces[1].points[1] = points[1]; faces[1].points[2] = points[5]; faces[1].points[3] = points[4];
-    faces[1].norm = ((faces[1].points[0]-faces[1].points[1]).CrossProduct(faces[1].points[0]-faces[1].points[3])).Norm();
+    faces[1].norm = ((faces[1].points[0]-faces[1].points[3]).CrossProduct(faces[1].points[0]-faces[1].points[1])).Norm();
 
     faces[2].points[0] = points[0]; faces[2].points[1] = points[3]; faces[2].points[2] = points[7]; faces[2].points[3] = points[4];
-    faces[2].norm = ((faces[2].points[0]-faces[2].points[3]).CrossProduct(faces[2].points[0]-faces[2].points[1])).Norm();
+    faces[2].norm = ((faces[2].points[0]-faces[2].points[1]).CrossProduct(faces[2].points[0]-faces[2].points[3])).Norm();
 
     faces[3].points[0] = points[1]; faces[3].points[1] = points[2]; faces[3].points[2] = points[6]; faces[3].points[3] = points[5];
-    faces[3].norm = ((faces[3].points[0]-faces[3].points[1]).CrossProduct(faces[3].points[0]-faces[3].points[3])).Norm();
+    faces[3].norm = ((faces[3].points[0]-faces[3].points[3]).CrossProduct(faces[3].points[0]-faces[3].points[1])).Norm();
 
     faces[4].points[0] = points[2]; faces[4].points[1] = points[3]; faces[4].points[2] = points[7]; faces[4].points[3] = points[6];
-    faces[4].norm = ((faces[4].points[0]-faces[4].points[1]).CrossProduct(faces[4].points[0]-faces[4].points[3])).Norm();
+    faces[4].norm = ((faces[4].points[0]-faces[4].points[3]).CrossProduct(faces[4].points[0]-faces[4].points[1])).Norm();
 
     faces[5].points[0] = points[4]; faces[5].points[1] = points[7]; faces[5].points[2] = points[6]; faces[5].points[3] = points[5];
-    faces[5].norm = ((faces[5].points[0]-faces[5].points[3]).CrossProduct(faces[5].points[0]-faces[5].points[1])).Norm();
+    faces[5].norm = ((faces[5].points[0]-faces[5].points[1]).CrossProduct(faces[5].points[0]-faces[5].points[3])).Norm();
 
     for(int i=0;i<6;i++)
         faces[i].D = faces[i].norm.DotProduct(faces[i].points[0]);
