@@ -104,7 +104,7 @@ float RayTracer::Shading(Vector3 point, Primitive* pointPrim, Light* light)
 {
     Vector3 p;
     Primitive* primitive = Trace(Ray(light->pos, point), p);
-    if (primitive && (fabs(p.x-point.x)>EPS || fabs(p.y-point.y)>EPS || fabs(p.z-point.z)>EPS) )
+    if (primitive && p.DistanceFrom(point)>EPS )
         return 1.0f - primitive->material.transperancy;
     else
         return 0.0f;
