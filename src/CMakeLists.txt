@@ -62,7 +62,7 @@ if (NOT SDL_FOUND)
 endif (NOT SDL_FOUND)
 
 if (WIN32)
-    set(CMAKE_EXE_LINKER_FLAGS "-mwindows")
+    set(CMAKE_EXE_LINKER_FLAGS "-mwindows -static-libgcc -static-libstdc++")
 endif (WIN32)
 
 if(NOT CMAKE_BUILD_TYPE EQUAL Debug)
