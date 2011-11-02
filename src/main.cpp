@@ -17,11 +17,23 @@
 #define HEIGHT 700
 #define WIDTH 700
 
-int main()
+int main(int argc, char* argv[])
 {
+    if (argc != 2)
+    {
+        printf("Usage:\n\trTracer <path_to_scene>\n");
+        return 1;
+    }
+
     SceneParser* sp = new SceneParser;
-    Scene* scene = sp->LoadScene("../scenes/scene1.dat");
+    Scene* scene = sp->LoadScene(argv[1]);
     delete sp;
+
+    if (scene == 0)
+    {
+        printf("File %s doesn't exists\n", argv[1]);
+        return 1;
+    }
 
     Screen* screen = new Screen(scene->camera, scene, HEIGHT, WIDTH);
 
